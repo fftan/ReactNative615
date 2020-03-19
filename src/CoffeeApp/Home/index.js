@@ -22,49 +22,50 @@ const listSlide = [
   { url: slide4 },
 ];
 
+const sizeScreen = Dimensions.get('window');
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.refSlide = React.createRef();
+    this.contenOffset = 0;
+  }
+
+  componentDidMount = () => {
+    this.autoNextSlide();
+  }
+
+  autoNextSlide = () => {
+    const index = this.contenOffset / sizeScreen.width;
+    console.log("Home -> autoNextSlide -> this.contenOffset", this.contenOffset)
+
+    if (index < 4) {
+      this.autoScroll = setInterval(() => { this.refSlide.current.scrollToOffset({ offset: sizeScreen.width + this.contenOffset }) }, 5000);
+    }
+  }
+
+  onMomentumScrollEnd = () => {
+    setTimeout(() => this.refSlide.current.scrollToOffset({ offset: 0 }), 5000);
   }
 
   renderSlide = ({ item, index }) => {
     return (
-      <ImageBackground source={item.url} style={styles.containerSlide}>
-        {/* <View style={styles.viewBtnSlide}>
-          <TouchableOpacity style={[styles.btnSlidePrev, MainStyles.viewCenter]}>
-            <MIcon name="chevron-left" style={styles.icSlide} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.viewBtnSlide}>
-          <TouchableOpacity style={[styles.btnSlideNext, MainStyles.viewCenter]}>
-            <MIcon name="chevron-right" style={styles.icSlide} />
-          </TouchableOpacity>
-        </View> */}
-      </ImageBackground>
-    );
-  }
-
-  renderFeature = () => {
-    return (
-      <View style={styles.viewTitle}>
-        <View style={{ flex: 1 }}>
-          <Text style={MainStyles.h3}>SUMMER ICE-COFFEE</Text>
-        </View>
-        <TouchableOpacity style={[styles.btnShowAll, MainStyles.viewCenter]}>
-          <Text style={styles.txtShowAll}>Show All</Text>
-        </TouchableOpacity>
-      </View>
+      <ImageBackground source={item.url} style={styles.containerSlide} />
     );
   }
 
   render = () => {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <StatusBar hidden />
         <View style={{ marginBottom: 10 }}>
           <FlatList
+            ref={this.refSlide}
             horizontal
+            onScroll={e => { this.contenOffset = e.nativeEvent.contentOffset.x }}
+            onEndReachedThreshold={1}
+            onEndReached={this.onMomentumScrollEnd}
             pagingEnabled
             data={listSlide}
             renderItem={this.renderSlide}

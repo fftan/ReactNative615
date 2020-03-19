@@ -16,12 +16,10 @@ const tabBarOptions = {
     position: 'absolute',
     top: 0,
   },
-  inactiveTintColor: '#636e72',
-  activeTintColor: '#fff',
   showIcon: true,
   style: {
     marginTop: 15,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   }
 };
 
@@ -34,7 +32,7 @@ const tabBarIcon = (iconName, size) => {
 const TabCoffeeShop = () => {
   return (
     <Tab.Navigator tabBarPosition="bottom" tabBarOptions={tabBarOptions} swipeEnabled={false}>
-      <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }} />
+      <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }}  />
       <Tab.Screen name="Options" component={OptionsScreen} options={{ tabBarIcon: () => tabBarIcon("settings-outline", 22) }} />
     </Tab.Navigator>
   )

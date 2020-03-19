@@ -10,9 +10,11 @@ import ChooseApp from './src/ChooseApp';
 import App2 from './src/app2/Home';
 const Stack = createStackNavigator();
 
+export const refMainNav = React.createRef();
+
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={refMainNav}>
       <Stack.Navigator>
         <Stack.Screen name="ChooseApp" component={ChooseApp} />
         <Stack.Screen name="CoffeeApp" component={TabCoffeeShop} options={{ headerShown: false }} />
