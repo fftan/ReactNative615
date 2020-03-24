@@ -20,6 +20,7 @@ const tabBarOptions = {
   style: {
     marginTop: 15,
     backgroundColor: '#fff',
+
   }
 };
 
@@ -32,40 +33,39 @@ const tabBarIcon = (iconName, size) => {
 const TabCoffeeShop = () => {
   return (
     <Tab.Navigator tabBarPosition="bottom" tabBarOptions={tabBarOptions} swipeEnabled={false}>
-      <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }}  />
+      <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }} />
       <Tab.Screen name="Options" component={OptionsScreen} options={{ tabBarIcon: () => tabBarIcon("settings-outline", 22) }} />
     </Tab.Navigator>
   )
 };
 
+const tabBarOptionsHome = {
+  inactiveTintColor: '#e17055',
+  activeTintColor: '#fff',
+  indicatorStyle: {
+    backgroundColor: '#fdcb6e',
+    height: 35,
+    borderRadius: 30,
+    borderBottomWidth: 0,
+    borderStartColor: '#fff'
+  },
+  style: {
+    borderBottomWidth: 0,
+    shadowColor: 'transparent',
+    marginHorizontal: 12,
+    elevation: 0,
+  },
+
+  tabStyle: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+};
+
 export const TabTopInHome = () => {
   return (
-    <Tab.Navigator
-      tabBarOptions={{
-        inactiveTintColor: '#e17055',
-        activeTintColor: '#fff',
-        indicatorStyle: {
-          backgroundColor: '#fdcb6e',
-          height: 35,
-          borderRadius: 30,
-          borderBottomWidth: 0,
-          borderStartColor: '#fff'
-        },
-        style: {
-          borderBottomWidth: 0,
-          shadowColor: 'transparent',
-          marginHorizontal: 12,
-          // marginTop: 10
-        },
-
-        tabStyle: {
-          height: 40,
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      }}
-
-    >
+    <Tab.Navigator tabBarOptions={tabBarOptionsHome}>
       <Tab.Screen name="Coffee" component={Coffee} options={{ title: 'Coffee' }} />
       <Tab.Screen name="Cheese" component={Cheese} options={{ title: 'Cheese' }} />
       <Tab.Screen name="Cake" component={Cake} options={{ title: 'Cake' }} />
