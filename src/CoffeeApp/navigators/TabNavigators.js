@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MTIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeStack from './StackNavigators';
-import { OptionsScreen } from './StackNavigators';
+import { OptionsScreen, CartScreen } from './StackNavigators';
 import Coffee from '../Home/Categories/Coffee';
 import Cheese from '../Home/Categories/Cheese';
 import Cake from '../Home/Categories/Cake';
@@ -35,6 +35,7 @@ const TabCoffeeShop = () => {
     <Tab.Navigator tabBarPosition="bottom" tabBarOptions={tabBarOptions} swipeEnabled={false}>
       <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }} />
       <Tab.Screen name="Options" component={OptionsScreen} options={{ tabBarIcon: () => tabBarIcon("settings-outline", 22) }} />
+      <Tab.Screen name="Cart" component={CartScreen} options={{ tabBarIcon: () => tabBarIcon("cart-outline", 22) }} />
     </Tab.Navigator>
   )
 };

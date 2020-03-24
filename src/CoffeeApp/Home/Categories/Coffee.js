@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image, FlatList, Dimensions } from 'react-native';
+import PropTypes from 'prop-types';
 
 // Components
 
@@ -26,6 +27,14 @@ const sizeScreen = Dimensions.get('window');
 
 export default class Coffee extends React.Component {
 
+  clickItem = (item) => {
+    const { navigation } = this.props;
+    const dataParams = {
+      name: item.name
+    };
+    navigation.navigate('ProductModal', dataParams);
+  }
+
   renderTitle = (title) => {
     return (
       <View style={styles.viewTitle}>
@@ -41,7 +50,7 @@ export default class Coffee extends React.Component {
 
   renderItem = ({ item, index }) => {
     return (
-      <TouchableOpacity style={{ marginHorizontal: 10 }}>
+      <TouchableOpacity style={{ marginHorizontal: 10 }} onPress={() => this.clickItem(item)}>
         <Image source={item.name} style={{ width: 100, height: 100, borderRadius: 3 }} />
       </TouchableOpacity>
     );
@@ -72,4 +81,8 @@ export default class Coffee extends React.Component {
       </ScrollView>
     );
   }
+}
+
+Coffee.propTypes = {
+  navigation: PropTypes.instanceOf(Object).isRequired,
 }
