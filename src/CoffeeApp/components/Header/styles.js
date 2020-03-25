@@ -8,7 +8,8 @@ const common = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 12,
-    height: 50
+    height: 50,
+    backgroundColor: '#fff',
   },
 
   leftTabBar: {

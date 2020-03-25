@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Modal, Image, ScrollView } from 'react-native';
 
 // Components
 
@@ -11,11 +11,17 @@ import styles from './styles';
 
 
 export default class Product extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render = () => {
-    const data = this.props.route.params;
+    const { route } = this.props;
     return (
       <View style={styles.container}>
-        <Text>{data.name}</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Image source={route.params.name} style={{ width: '100%', height: 300 }} />
+        </ScrollView>
       </View>
     );
   }

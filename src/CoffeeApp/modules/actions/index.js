@@ -1,0 +1,1 @@
+import { SELECTED_PRODUCT } from './Types';
