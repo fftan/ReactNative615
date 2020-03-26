@@ -14,7 +14,6 @@ import styles from './styles';
 export default class Header extends React.Component {
   render = () => {
     const { navigation } = this.props;
-    console.log("Header -> render -> navigation", navigation)
     return (
       <View style={styles.tabBar}>
         <View style={styles.leftTabBar}>

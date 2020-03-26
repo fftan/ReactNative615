@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { StackActions } from '@react-navigation/native';
 // Components
@@ -12,6 +12,10 @@ import { refMainNav } from '../../../App';
 
 // Variables
 
+const list = [
+  { name: 'Switch App' },
+  { name: 'Test Realm' },
+]
 
 export default class Options extends React.Component {
   constructor(props) {
@@ -19,18 +23,35 @@ export default class Options extends React.Component {
 
   }
 
-  comeListApp = () => {
-    const replaceAction = StackActions.replace('ChooseApp');
-    refMainNav.current?.dispatch(replaceAction);
+  clickItem = (item, index) => {
+    if (index === 0) {
+      const replaceAction = StackActions.replace('ChooseApp');
+      refMainNav.current?.dispatch(replaceAction);
+      return;
+    }
+    if (index === 1) {
+      const { navigation } = this.props;
+      navigation.navigate('RealmTest');
+    }
+  }
+
+  renderItem = ({ item, index }) => {
+    return (
+      <TouchableOpacity style={MainStyles.buttonOfList} onPress={() => this.clickItem(item, index)}>
+        <Text>{item.name}</Text>
+      </TouchableOpacity>
+    );
   }
 
   render = () => {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <TouchableOpacity style={MainStyles.buttonOfList} onPress={this.comeListApp}>
-          <Text>Switch App</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <View contentContainerStyle={styles.container}>
+        <FlatList
+          data={list}
+          renderItem={this.renderItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
     );
   }
 }
