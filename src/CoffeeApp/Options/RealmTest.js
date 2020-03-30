@@ -80,15 +80,6 @@ export default class RealmTest extends React.Component {
         />
         <Modal visible={isVisible}>
           <View style={realmTest.viewForm}>
-            {/* <TextInput
-              placeholder='Enter id'
-              placeholderTextColor='#eeeeee'
-              style={realmTest.input}
-              autoCorrect={false}
-              autoCapitalize={false}
-              onChangeText={(text) => this.onChangeText(text)}
-              value={id}
-            /> */}
             <TextInput
               placeholder='Enter id'
               placeholderTextColor='#eeeeee'
