@@ -5,6 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../Home';
 import Options from '../Options';
 
+import TestFP from '../modals/TestFP';
+import TestOOP from '../modals/TestOOP';
+import WebRTC from '../components/WebRTC';
+
 const Stack = createStackNavigator();
 
 const HomeScreen = () => {
@@ -19,6 +23,9 @@ export const OptionsScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Options" component={Options} />
+      <Stack.Screen name="TestFP" component={TestFP} />
+      <Stack.Screen name="TestOOP" component={TestOOP} />
+      <Stack.Screen name="WebRTC" component={WebRTC} />
     </Stack.Navigator>
   )
 };

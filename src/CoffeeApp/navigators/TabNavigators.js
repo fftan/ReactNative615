@@ -32,7 +32,7 @@ const tabBarIcon = (iconName, size) => {
 const TabCoffeeShop = () => {
   return (
     <Tab.Navigator tabBarPosition="bottom" tabBarOptions={tabBarOptions} swipeEnabled={false}>
-      <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }}  />
+      <Tab.Screen name="Home" component={HomeStack} options={{ tabBarIcon: () => tabBarIcon("home-outline", 22) }} />
       <Tab.Screen name="Options" component={OptionsScreen} options={{ tabBarIcon: () => tabBarIcon("settings-outline", 22) }} />
     </Tab.Navigator>
   )
@@ -55,7 +55,6 @@ export const TabTopInHome = () => {
           borderBottomWidth: 0,
           shadowColor: 'transparent',
           marginHorizontal: 12,
-          // marginTop: 10
         },
 
         tabStyle: {

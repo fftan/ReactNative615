@@ -1,4 +1,4 @@
 export default [
   { name: 'CoffeeApp' },
-  { name: 'App2' },
+  { name: 'ManagementCoffee' },
 ]

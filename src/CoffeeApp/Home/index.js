@@ -38,15 +38,14 @@ export default class Home extends React.Component {
 
   autoNextSlide = () => {
     const index = this.contenOffset / sizeScreen.width;
-    console.log("Home -> autoNextSlide -> this.contenOffset", this.contenOffset)
 
     if (index < 4) {
-      this.autoScroll = setInterval(() => { this.refSlide.current.scrollToOffset({ offset: sizeScreen.width + this.contenOffset }) }, 5000);
+      this.autoScroll = setInterval(() => { this.refSlide.current?.scrollToOffset({ offset: sizeScreen.width + this.contenOffset }) }, 5000);
     }
   }
 
   onMomentumScrollEnd = () => {
-    setTimeout(() => this.refSlide.current.scrollToOffset({ offset: 0 }), 5000);
+    setTimeout(() => this.refSlide.current?.scrollToOffset({ offset: 0 }), 5000);
   }
 
   renderSlide = ({ item, index }) => {
@@ -68,7 +67,7 @@ export default class Home extends React.Component {
             onEndReached={this.onMomentumScrollEnd}
             pagingEnabled
             data={listSlide}
-            renderItem={this.renderSlide}
+            renderItem={({ item, index }) => this.renderSlide({item, index})}
             keyExtractor={(item, index) => index.toString()}
             showsHorizontalScrollIndicator={false}
           />

@@ -12,6 +12,12 @@ import { refMainNav } from '../../../App';
 
 // Variables
 
+const options = [
+  { name: 'ChooseApp' },
+  { name: 'TestFP' },
+  { name: 'TestOOP' },
+  { name: 'WebRTC' }
+]
 
 export default class Options extends React.Component {
   constructor(props) {
@@ -19,17 +25,26 @@ export default class Options extends React.Component {
 
   }
 
-  comeListApp = () => {
-    const replaceAction = StackActions.replace('ChooseApp');
+  comeListApp = (item) => {
+    const screenTarget = options.find(x => x.name === item.name);
+    const replaceAction = StackActions.replace(screenTarget.name);
     refMainNav.current?.dispatch(replaceAction);
   }
+
+  renderOptions = () => options.map((item, index) => {
+    return (
+      <TouchableOpacity style={MainStyles.buttonOfList} onPress={() => this.comeListApp(item)}>
+        <Text>
+          {item.name}
+        </Text>
+      </TouchableOpacity>
+    );
+  })
 
   render = () => {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <TouchableOpacity style={MainStyles.buttonOfList} onPress={this.comeListApp}>
-          <Text>Switch App</Text>
-        </TouchableOpacity>
+        {this.renderOptions()}
       </ScrollView>
     );
   }
