@@ -44,10 +44,6 @@ export default class Home extends React.Component {
     }
   }
 
-  onMomentumScrollEnd = () => {
-    setTimeout(() => this.refSlide.current?.scrollToOffset({ offset: 0 }), 5000);
-  }
-
   renderSlide = ({ item, index }) => {
     return (
       <ImageBackground source={item.url} style={styles.containerSlide} />
@@ -63,8 +59,6 @@ export default class Home extends React.Component {
             ref={this.refSlide}
             horizontal
             onScroll={e => { this.contenOffset = e.nativeEvent.contentOffset.x }}
-            onEndReachedThreshold={1}
-            onEndReached={this.onMomentumScrollEnd}
             pagingEnabled
             data={listSlide}
             renderItem={({ item, index }) => this.renderSlide({item, index})}

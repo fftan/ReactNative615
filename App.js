@@ -1,9 +1,14 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import TabCoffeeShop from './src/CoffeeApp/navigators/TabNavigators';
+import RootReducer from './src/CoffeeApp/modules/reducers/RootReducer';
+import Product from './src/CoffeeApp/ProductsScreen/Product';
+import Header from './src/CoffeeApp/components/Header';
 
 import ChooseApp from './src/ChooseApp';
 
